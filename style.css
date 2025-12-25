@@ -1,0 +1,603 @@
+/* style.css */
+
+/* Căn giữa và làm đẹp khung nhập liệu */
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+}
+
+.controls {
+  margin: 20px 0;
+  text-align: center;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.input-group {
+  margin-bottom: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+input {
+  padding: 8px;
+  width: 60px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+button {
+  padding: 8px 16px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background-color: #555;
+}
+
+button:disabled {
+  background-color: #b0abab;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+/* --- GRID STYLES --- */
+
+#grid-container {
+  display: grid;
+  background: black;
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  /* Grid template columns sẽ được JS xử lý */
+}
+
+/* Style cho từng ô */
+.cell {
+  background-color: greenyellow; /* Màu XANH mặc định */
+  cursor: pointer;
+  box-shadow: inset -2px -2px 0 0 #333;
+  /* transition: background-color 0.2s, transform 0.1s; */
+}
+
+/* Hiệu ứng nhấn xuống nhẹ */
+.cell:active,
+button:active {
+  transform: scale(0.95);
+}
+
+/* Style khi ô được kích hoạt (đã click) */
+.cell.active {
+  background-color: #ffeb3b; /* Màu VÀNG */
+}
+
+#st,
+#st * {
+  margin: 0.5em;
+}
+
+.fa-solid,
+.fa-regular {
+  color: greenyellow;
+  font-size: 2em;
+}
+
+.icon-btn {
+  box-shadow: none;
+  background-color: #fff;
+  position: absolute;
+  align-self: self-start;
+  margin-right: auto;
+  margin-left: 2em;
+}
+
+#btn-setting {
+  top: 1em;
+}
+
+#btn-guide {
+  top: 5em;
+}
+#btn-list {
+  align-self: self-end;
+  margin-right: 2em;
+  margin-left: auto;
+  top: 1em;
+}
+
+#btn-guide:hover,
+#btn-list:hover {
+  transform: scale(1.15);
+}
+.icon-btn:hover {
+  transform: rotate(90deg) scale(1.15);
+  background-color: #fff;
+}
+
+.floating-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 50%; /* Hình tròn */
+
+  /* Căn giữa icon */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  z-index: 100; /* Luôn nổi trên cùng */
+  transition: all 0.3s ease;
+}
+
+/* --- 2. Modal (Cửa sổ bật lên) --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Nền đen mờ */
+  z-index: 999;
+
+  /* Căn giữa hộp thoại */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+/* Class để ẩn modal */
+.hidden {
+  display: none !important;
+}
+.hid {
+  visibility: hidden;
+}
+.modal-box {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  width: 320px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  animation: slideDown 0.3s ease-out;
+}
+
+/* Hiệu ứng trượt xuống */
+@keyframes slideDown {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.close-icon {
+  cursor: pointer;
+  font-size: 18px;
+  padding: 5px;
+}
+/* .close-icon:hover {
+  color: #e74c3c;
+} */
+.btn-primary {
+  width: 100%;
+  padding: 10px;
+  background-color: #58e65f;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  background-color: #3caf1d;
+}
+
+/* phần hướng dẫn */
+#close-guide {
+  position: relative;
+  top: 1em;
+  left: 85%;
+}
+.gol-tutorial-card {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  width: 70%;
+
+  max-width: 200rem;
+  aspect-ratio: 2/1;
+  background-color: #fff; /* Màu nền thẻ */
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  margin: 20px auto;
+  border: 1px solid #444;
+}
+
+/* Phần nội dung slide */
+.gol-slide {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 85%; /* Chừa chỗ cho dots */
+  padding: 20px;
+  text-align: center;
+  animation: fadeIn 0.5s;
+}
+
+.gol-slide.active {
+  display: flex;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Tiêu đề và nội dung text */
+.gol-slide h3 {
+  margin-bottom: 15px;
+  color: #ffeb3b; /* Màu vàng điểm nhấn */
+}
+.gol-slide p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: green;
+}
+.gol-slide ul {
+  text-align: left;
+  font-size: 13px;
+  padding-left: 20px;
+  color: green;
+}
+/* MINH HOẠ BẰNG CSS GRID (Không cần ảnh ngoài) */
+.guide-img {
+  display: flex;
+  align-items: center;
+}
+.guide-cell {
+  display: inline-block;
+}
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background-color: #555;
+  padding: 2px;
+  margin: 15px 0;
+  border: 1px solid #666;
+}
+.demo-cell {
+  width: 25px;
+  height: 25px;
+  background-color: #adff2f; /* Màu chết */
+}
+.demo-cell.alive {
+  background-color: #ffeb3b; /* Màu sống */
+  /* box-shadow: 0 0 5px #ffeb3b; */
+}
+/* Icon chuột click */
+.cursor-icon {
+  font-size: 40px;
+  animation: clickAnim 1.5s infinite;
+}
+@keyframes clickAnim {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Các nút điều hướng (Mũi tên) */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.3);
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.prev-btn {
+  left: 10px;
+}
+.next-btn {
+  right: 10px;
+}
+
+/* Dấu chấm chỉ trang (Pagination Dots) */
+.dots-container {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  text-align: center;
+}
+.dot {
+  height: 10px;
+  width: 10px;
+  margin: 0 5px;
+  background-color: greenyellow;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.dot.active {
+  background-color: #ffeb3b;
+  transform: scale(1.2);
+}
+
+/* phần hướng dẫn đầu */
+.color-guide {
+  display: flex;
+  gap: 20px;
+  margin: 20px 0;
+}
+.color-guide > div {
+  text-align: center;
+}
+.demo-cell.cell-guide {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto;
+  border: 1px solid #666;
+}
+.cell-guide p {
+  margin-top: 5px;
+}
+#live {
+  color: #ffeb3b;
+}
+/* ====================phần đăng nhập============================ */
+/* --- 2. Hộp Login (Thu nhỏ lại so với modal thường) --- */
+.login-box {
+  background: white;
+  padding: 25px;
+  height: 100%;
+  width: 100%; /* Để không bị vỡ trên mobile */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- 3. Căn giữa Tiêu đề --- */
+.header-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  border-bottom: none; /* Bỏ gạch chân nhìn cho thoáng */
+  padding-bottom: 5px;
+  margin-top: 2em;
+}
+
+/* --- 4. Style phụ trợ cho Form đẹp hơn (Khuyên dùng) --- */
+
+/* Input và Button tràn chiều ngang */
+.input-full {
+  width: 30rem;
+  height: 2rem;
+  box-sizing: border-box; /* Để padding không làm vỡ khung */
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn-full {
+  display: flex;
+  height: 2rem;
+  width: 2rem;
+  padding: 10px;
+  font-size: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Căn giữa footer chứa nút bấm */
+.footer-center {
+  justify-content: center;
+  padding-top: 10px;
+  display: inline-block;
+}
+.login-input {
+  flex-direction: column;
+}
+
+#login {
+  color: #000;
+}
+/* --- 1. Style cho Game Timer (Giữa trên) --- */
+.timer-float-top {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%); /* Căn giữa tuyệt đối */
+
+  background-color: #333;
+  color: #f1c40f; /* Màu vàng nổi bật */
+  padding: 10px 25px;
+  border-radius: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+  font-family: monospace;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 50;
+  transition: transform 0.3s;
+}
+
+/* Hiệu ứng khi sắp hết giờ (nhấp nháy đỏ) */
+.timer-warning {
+  background-color: #c0392b;
+  color: white;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.1);
+  } /* Phóng to nhẹ */
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+/* --- 2. Style cho Real Time (Góc dưới phải) --- */
+.date-float-bottom {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+
+  background: rgba(255, 255, 255, 0.9); /* Nền trắng hơi trong suốt */
+  padding: 10px 15px;
+  border-radius: 8px;
+  border-left: 4px solid #ffeb3b; /* Thanh màu trang trí bên trái */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+  text-align: right; /* Căn lề phải */
+  z-index: 40;
+  font-family: sans-serif;
+}
+
+.time-row {
+  font-size: 20px;
+  font-weight: 800;
+  color: #34db39;
+  letter-spacing: 1px;
+}
+
+.date-row {
+  font-size: 13px;
+  color: #4e9a51;
+  margin-top: 4px;
+  text-transform: uppercase; /* Viết hoa toàn bộ thứ ngày */
+}
+.app-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100vh; /* Chiều cao full màn hình */
+  transition: all 0.4s ease; /* Hiệu ứng mượt mà */
+}
+.main-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.4s ease;
+  flex-grow: 1;
+}
+
+/* Phần Sidebar (Ban đầu đóng) */
+.right-sidebar {
+  width: 0; /* Mặc định độ rộng bằng 0 */
+  background-color: #333;
+  /* border-left: 1px solid #444; */
+  overflow: hidden;
+  /* Ẩn nội dung khi chiều rộng = 0 */
+  transition: width 0.4s ease; /* Hiệu ứng trượt */
+  flex-shrink: 0; /* Không cho phép bị co nhỏ hơn width quy định */
+}
+
+/* Class này được thêm vào khi bấm nút mở */
+.right-sidebar.open {
+  width: 20%; /* Độ rộng khi mở ra */
+}
+
+/* Style nội dung bên trong sidebar */
+.sidebar-inner {
+  width: 80%;
+  /* Cố định chiều rộng nội dung để không bị méo khi trượt */
+  padding: 20px;
+  color: #fff;
+  font-family: sans-serif;
+}
+
+.sidebar-inner textarea {
+  width: 100%;
+  background: #1a1a1a;
+  color: #0f0;
+  border: 1px solid #555;
+  margin-top: 10px;
+  padding: 10px;
+  box-sizing: border-box; /* Để padding không làm vỡ layout */
+}
+
+.action-btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #ffeb3b;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-btn {
+  width: 100%;
+  padding: 5px;
+  margin-top: 10px;
+  background-color: #555;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
