@@ -1,0 +1,35 @@
+/* style.css */
+@import "login.css";
+@import "timer.css";
+@import "sidebar.css";
+@import "guide.css";
+@import "control.css";
+@import "grid.css";
+@import "button.css";
+@import "icon.css";
+@import "effect.css";
+@import "modal.css";
+
+/* Căn giữa và làm đẹp khung nhập liệu */
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+}
+
+.app-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100vh; /* Chiều cao full màn hình */
+  transition: all 0.4s ease; /* Hiệu ứng mượt mà */
+}
+.main-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.4s ease;
+  flex-grow: 1;
+}

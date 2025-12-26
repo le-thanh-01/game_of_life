@@ -1,0 +1,27 @@
+.fa-solid,
+.fa-regular {
+  color: greenyellow;
+  font-size: 2em;
+}
+
+.icon-btn {
+  box-shadow: none;
+  background-color: #fff;
+  position: absolute;
+  align-self: self-start;
+  margin-right: auto;
+  margin-left: 2em;
+}
+
+.icon-btn:hover {
+  transform: rotate(90deg) scale(1.15);
+  background-color: #fff;
+}
+.close-icon {
+  cursor: pointer;
+  font-size: 18px;
+  padding: 5px;
+}
+/* .close-icon:hover {
+  color: #e74c3c;
+} */

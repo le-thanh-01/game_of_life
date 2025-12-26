@@ -1,0 +1,28 @@
+/* --- GRID STYLES --- */
+
+#grid-container {
+  display: grid;
+  background: black;
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  /* Grid template columns sẽ được JS xử lý */
+}
+
+/* Style cho từng ô */
+.cell {
+  background-color: greenyellow; /* Màu XANH mặc định */
+  cursor: pointer;
+  box-shadow: inset -2px -2px 0 0 #333;
+  /* transition: background-color 0.2s, transform 0.1s; */
+}
+
+/* Hiệu ứng nhấn xuống nhẹ */
+.cell:active,
+button:active {
+  transform: scale(0.95);
+}
+
+/* Style khi ô được kích hoạt (đã click) */
+.cell.active {
+  background-color: #ffeb3b; /* Màu VÀNG */
+}

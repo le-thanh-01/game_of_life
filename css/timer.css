@@ -1,0 +1,72 @@
+/* --- 1. Style cho Game Timer (Giữa trên) --- */
+.timer-float-top {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%); /* Căn giữa tuyệt đối */
+
+  background-color: #333;
+  color: #f1c40f; /* Màu vàng nổi bật */
+  padding: 10px 25px;
+  border-radius: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+  font-family: monospace;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 50;
+  transition: transform 0.3s;
+}
+
+/* Hiệu ứng khi sắp hết giờ (nhấp nháy đỏ) */
+.timer-warning {
+  background-color: #c0392b;
+  color: white;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.1);
+  } /* Phóng to nhẹ */
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+/* --- 2. Style cho Real Time (Góc dưới phải) --- */
+.date-float-bottom {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+
+  background: rgba(255, 255, 255, 0.9); /* Nền trắng hơi trong suốt */
+  padding: 10px 15px;
+  border-radius: 8px;
+  border-left: 4px solid #ffeb3b; /* Thanh màu trang trí bên trái */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+  text-align: right; /* Căn lề phải */
+  z-index: 40;
+  font-family: sans-serif;
+}
+
+.time-row {
+  font-size: 20px;
+  font-weight: 800;
+  color: #34db39;
+  letter-spacing: 1px;
+}
+
+.date-row {
+  font-size: 13px;
+  color: #4e9a51;
+  margin-top: 4px;
+  text-transform: uppercase; /* Viết hoa toàn bộ thứ ngày */
+}

@@ -1,0 +1,42 @@
+/* Phần Sidebar (Ban đầu đóng) */
+.right-sidebar {
+  width: 0; /* Mặc định độ rộng bằng 0 */
+  background-color: #333;
+  /* border-left: 1px solid #444; */
+  overflow: hidden;
+  /* Ẩn nội dung khi chiều rộng = 0 */
+  transition: width 0.4s ease; /* Hiệu ứng trượt */
+  flex-shrink: 0; /* Không cho phép bị co nhỏ hơn width quy định */
+}
+
+/* Class này được thêm vào khi bấm nút mở */
+.right-sidebar.open {
+  width: 20%; /* Độ rộng khi mở ra */
+}
+
+/* Style nội dung bên trong sidebar */
+.sidebar-inner {
+  width: 80%;
+  /* Cố định chiều rộng nội dung để không bị méo khi trượt */
+  padding: 20px;
+  color: #fff;
+  font-family: sans-serif;
+}
+
+.sidebar-inner textarea {
+  width: 100%;
+  background: #1a1a1a;
+  color: #0f0;
+  border: 1px solid #555;
+  margin-top: 10px;
+  padding: 10px;
+  box-sizing: border-box; /* Để padding không làm vỡ layout */
+}
+
+.sidebar-inner .input-group {
+  margin-bottom: 15px;
+}
+
+.sidebar-inner .input-group input {
+  width: 40px;
+}
