@@ -5,3 +5,6 @@
 .hid {
   visibility: hidden;
 }
+.grid-disabled {
+  pointer-events: none;
+}

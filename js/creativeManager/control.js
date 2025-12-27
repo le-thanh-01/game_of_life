@@ -1,5 +1,4 @@
 // Hàm lấy giá trị input và tạo lưới
-import { InteractiveGrid } from "./Grid.js";
 export function handleCreateGrid(Grid) {
   const rowsInput = document.getElementById("rowsInput");
   const colsInput = document.getElementById("colsInput");
@@ -7,12 +6,9 @@ export function handleCreateGrid(Grid) {
   const n = parseInt(colsInput.value);
 
   if (m > 0 && n > 0) {
-    Grid.myGrid = new InteractiveGrid(
-      m,
-      n,
-      Grid.myGrid.cell_size,
-      "grid-container"
-    );
+    Grid.myGrid.rows = m;
+    Grid.myGrid.cols = n;
+    Grid.myGrid.render();
   } else {
     alert("Vui lòng nhập số dòng và cột lớn hơn 0");
   }

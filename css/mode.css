@@ -1,0 +1,119 @@
+/* --- Hộp chọn chế độ --- */
+
+.mode-box {
+  height: 100dvh;
+  width: 500px; /* Rộng hơn chút để chứa 2 nút */
+  max-width: 90%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.mode-buttons {
+  display: flex;
+  gap: 20%;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.mode-btn {
+  min-width: 70%;
+  padding: 10px;
+  border: 2px solid #eee;
+  border-radius: 12px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: none;
+}
+
+.mode-btn i {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+/* Màu riêng cho Creative (Xanh) */
+.mode-btn.creative:hover {
+  border-color: #3498db;
+  background-color: #ebf5fb;
+  transform: translateY(-5px);
+}
+.mode-btn.creative {
+  --base-color-p: #5f1156; /* Màu gốc */
+  --light-color-p: #8e2a82; /* Màu sáng (Highlight) */
+  --dark-color-p: #2f082b; /* Màu tối (Shadow) */
+
+  /* 1. Tạo độ cong bằng Gradient (Trên sáng - Dưới tối) */
+  background: linear-gradient(
+    to bottom,
+    var(--light-color-p) 0%,
+    var(--base-color-p) 40%,
+    var(--dark-color-p) 100%
+  );
+
+  /* 2. Viền 3D: Trên sáng - Dưới tối */
+  border-style: solid;
+  border-width: 2px;
+  border-color: var(--light-color) var(--dark-color) var(--dark-color)
+    var(--light-color);
+}
+
+.mode-btn.creative:active {
+  /* Đảo ngược Gradient: Trên tối - Dưới sáng */
+  background: linear-gradient(
+    to bottom,
+    var(--dark-color-p) 0%,
+    var(--base-color-p) 60%,
+    var(--light-color-p) 100%
+  );
+
+  /* Đảo ngược viền */
+  border-color: var(--dark-color-p) var(--light-color-p) var(--light-color-p)
+    var(--dark-color-p);
+}
+/* Màu riêng cho Survival (Đỏ) */
+.mode-btn.survival:hover {
+  border-color: #e74c3c;
+  background-color: #fdedec;
+  transform: translateY(-5px);
+}
+.mode-btn.survival {
+  /* 1. Màu sắc cốt lõi (Ví dụ màu cam) */
+  --main-color: #e67e22; /* Màu chính giữa */
+  --light-color: #f39c12; /* Màu sáng hơn ở trên */
+  --dark-color: #d35400; /* Màu tối hơn ở dưới */
+
+  /* 2. Tạo độ phồng bằng Gradient */
+  /* Ánh sáng chiếu từ trên xuống: Trên sáng, dưới tối */
+  background: linear-gradient(
+    to bottom,
+    var(--light-color) 0%,
+    var(--main-color) 50%,
+    var(--dark-color) 100%
+  );
+
+  /* 3. Tạo viền 3D bằng border */
+  border-style: solid;
+  border-width: 1px;
+  /* Viền trên sáng, viền dưới tối để tăng độ tương phản */
+  border-color: var(--light-color) var(--dark-color) var(--dark-color)
+    var(--light-color);
+}
+
+.mode-btn.survival:active {
+  /* Đảo ngược Gradient: Trên tối - Dưới sáng */
+  background: linear-gradient(
+    to bottom,
+    var(--dark-color) 0%,
+    var(--main-color) 60%,
+    var(--light-color) 100%
+  );
+
+  /* Đảo ngược viền */
+  border-color: var(--dark-color) var(--light-color) var(--light-color)
+    var(--dark-color);
+}

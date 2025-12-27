@@ -115,8 +115,45 @@
     </div>
     <div class="app-wrapper">
       <div class="main-content">
+        <div id="mode-modal">
+          <div class="mode-box">
+            <h2 data-lang="mode_title">Chọn Chế Độ Chơi</h2>
+            <div class="mode-buttons">
+              <button id="btn-mode-survival" class="mode-btn survival">
+                <h3 data-lang="mode_survival">Sinh Tồn</h3>
+                <p data-lang="desc_survival">Trả lời câu hỏi để sống sót.</p>
+              </button>
+              <button id="btn-mode-creative" class="mode-btn creative">
+                <h3 data-lang="mode_creative">Sáng Tạo</h3>
+                <p data-lang="desc_creative">Tự do vẽ và quan sát.</p>
+              </button>
+            </div>
+            <div class="spacer"></div>
+          </div>
+        </div>
+        <div class="question hidden">
+          <div class="question-box">
+            <h3 id="lbl_question"></h3>
+            <p id="question-text"></p>
+            <div id="check-status">
+              <div id="game-timer-box" class="timer-float-top hidden">
+                <i class="fa-solid fa-hourglass-half"></i>
+                <span id="game-timer">00:00</span>
+              </div>
+              <div class="game-progress"><p>fferfrf</p></div>
+            </div>
+          </div>
+        </div>
+        <div id="grid-survival" class="grid hidden">
+          <div class="grid-container"></div>
+          <div class="st">
+            <button class="start">START</button>
+            <button class="stop" disabled>STOP</button>
+            <button class="reset">RESET</button>
+          </div>
+        </div>
         <!-- thay đổi kích thước bảng -->
-        <div class="controls">
+        <div class="controls hidden">
           <div class="board-input">
             <h2 data-lang="h_coordinates"></h2>
             <div class="input-group">
@@ -162,11 +199,13 @@
         </div>
         <!-- ========================================================== -->
         <!-- nội dung bảng -->
-        <div id="grid-container"></div>
-        <div id="st">
-          <button id="start">START</button>
-          <button id="stop" disabled>STOP</button>
-          <button id="reset">RESET</button>
+        <div id="grid-creative" class="grid hidden">
+          <div class="grid-container"></div>
+          <div class="st">
+            <button class="start">START</button>
+            <button class="stop" disabled>STOP</button>
+            <button class="reset">RESET</button>
+          </div>
         </div>
         <!-- =========================================================== -->
         <button id="btn-setting" class="icon-btn" data-title="btn_setting">
@@ -461,10 +500,6 @@
         <!-- ================================================== -->
 
         <!-- phần thời gian -->
-        <div id="game-timer-box" class="timer-float-top hidden">
-          <i class="fa-solid fa-hourglass-half"></i>
-          <span id="game-timer">00:00</span>
-        </div>
 
         <div id="real-time-box" class="date-float-bottom">
           <div class="time-row" id="rt-time"></div>
@@ -498,6 +533,37 @@
             id="closeSidebarBtn"
             class="close-btn"
           ></button>
+        </div>
+      </div>
+      <div id="critical-error" class="win-dialog hidden">
+        <div class="win-title-bar" id="error-drag-handle">
+          <div class="title-text">Microsoft Windows</div>
+          <button class="title-close-btn">X</button>
+        </div>
+
+        <div class="win-body">
+          <div class="icon-zone">
+            <div class="red-x-icon">
+              <img
+                src="./ico/download.png"
+                alt="Error Icon"
+                class="xp-error-icon"
+              />
+            </div>
+          </div>
+
+          <div class="message-zone">
+            <p class="msg-title">
+              A fatal exception 0E has occurred at 0028:C0011E36 in VXD VMM(01)
+              + 00010E36.
+            </p>
+            <p>The current application will be terminated.</p>
+
+            <div class="btn-group">
+              <button class="win-btn" onclick="closeError()">Close</button>
+              <button class="win-btn">Details >></button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

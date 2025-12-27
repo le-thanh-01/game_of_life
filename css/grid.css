@@ -1,6 +1,6 @@
 /* --- GRID STYLES --- */
 
-#grid-container {
+.grid-container {
   display: grid;
   background: black;
   border-top: 2px solid black;
@@ -25,4 +25,33 @@ button:active {
 /* Style khi ô được kích hoạt (đã click) */
 .cell.active {
   background-color: #ffeb3b; /* Màu VÀNG */
+}
+
+/* Định nghĩa class marked */
+.cell.marked {
+  position: relative; /* Để căn chỉnh đường chéo theo ô này */
+  /* background-color: rgba(255, 0, 0, 0.1);  Tuỳ chọn: Thêm nền mờ nếu thích */
+}
+
+/* Tạo đường chéo chung */
+.cell.marked::before,
+.cell.marked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%; /* Độ dài đường chéo (80% kích thước ô) */
+  height: 2px; /* Độ dày nét vẽ */
+  background-color: black; /* Màu sắc đường chéo */
+  transform-origin: center; /* Xoay từ tâm */
+}
+
+/* Đường chéo thứ nhất: Xoay 45 độ (\) */
+.cell.marked::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+/* Đường chéo thứ hai: Xoay -45 độ (/) */
+.cell.marked::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }

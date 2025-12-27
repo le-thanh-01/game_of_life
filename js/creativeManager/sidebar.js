@@ -19,7 +19,6 @@ export function setupSidebar(Grid) {
     const y = parseInt(document.getElementById("coordy").value) || 0;
     const rleCode = document.getElementById("rleInput").value;
     const myGrid = Grid();
-    console.log(myGrid);
     if (rleCode.trim()) {
       // Gọi hàm parse trong class Grid của bạn
       // Lưu ý: Đảm bảo biến 'grid' đã được khởi tạo và có thể truy cập ở đây

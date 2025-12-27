@@ -73,8 +73,8 @@ button:disabled {
 .btn-primary:hover {
   background-color: #3caf1d;
 }
-#st,
-#st * {
+.st,
+.st * {
   margin: 0.5em;
 }
 

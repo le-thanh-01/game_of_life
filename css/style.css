@@ -9,6 +9,9 @@
 @import "icon.css";
 @import "effect.css";
 @import "modal.css";
+@import "mode.css";
+@import "ques.css";
+@import "errorAlert.css";
 
 /* Căn giữa và làm đẹp khung nhập liệu */
 body {
@@ -25,7 +28,8 @@ body {
   height: 100vh; /* Chiều cao full màn hình */
   transition: all 0.4s ease; /* Hiệu ứng mượt mà */
 }
-.main-content {
+.main-content,
+.grid {
   width: 100%;
   display: flex;
   flex-direction: column;

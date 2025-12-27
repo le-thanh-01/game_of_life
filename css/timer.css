@@ -1,32 +1,31 @@
 /* --- 1. Style cho Game Timer (Giữa trên) --- */
 .timer-float-top {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%); /* Căn giữa tuyệt đối */
+  /* bottom: 20px;
+  left: 50%; */
+  /* transform: translateX(-50%); Căn giữa tuyệt đối */
 
-  background-color: #333;
-  color: #f1c40f; /* Màu vàng nổi bật */
-  padding: 10px 25px;
-  border-radius: 30px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  /* background-color: #333; */
+  /* color: #f1c40f; Màu vàng nổi bật */
+  /* padding: 10px 25px; */
+  /* border-radius: 30px; */
+  /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); */
 
   font-family: monospace;
   font-size: 24px;
   font-weight: bold;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
+  /* gap: 10px; */
   z-index: 50;
   transition: transform 0.3s;
 }
 
 /* Hiệu ứng khi sắp hết giờ (nhấp nháy đỏ) */
-.timer-warning {
+/* .timer-warning {
   background-color: #c0392b;
   color: white;
   animation: pulse 1s infinite;
-}
+} */
 
 @keyframes pulse {
   0% {

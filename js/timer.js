@@ -3,7 +3,7 @@
 export const TimeSystem = {
   timerInterval: null,
   currentLocale: "en-US", // Mặc định là en
-
+  time_up: false,
   // Hàm này để LanguageSystem gọi khi đổi ngôn ngữ
   setLocale(langKey) {
     // Map từ khóa của bạn (vi/en) sang chuẩn của trình duyệt
@@ -57,7 +57,8 @@ export const TimeSystem = {
 
     elDate.textContent = dateString;
   },
-  startCountdown(seconds) {
+  startCountdown(seconds, onTimeoutCallback) {
+    this.time_up = false;
     // Hiện đồng hồ đếm ngược lên (nếu đang ẩn)
     document.getElementById("game-timer-box").classList.remove("hidden");
 
@@ -88,7 +89,10 @@ export const TimeSystem = {
         this.stopCountdown();
         // Ẩn đồng hồ đi khi hết giờ (tuỳ chọn)
         // box.classList.add('hidden');
-        alert("Time's Up!");
+        this.time_up = true;
+        if (typeof onTimeoutCallback === "function") {
+          onTimeoutCallback();
+        }
       }
     }, 1000);
   },

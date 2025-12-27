@@ -1,0 +1,46 @@
+/* --- Khu vực Câu hỏi (Question) --- */
+/* .question {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  max-width: 95%;
+  z-index: 80;
+  min-height: 30%;
+} */
+/* 
+.question-box {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+  border: 2px solid #333;
+} */
+/* 
+.answer-options {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+} */
+/* 
+.btn-ans {
+  flex: 1;
+  padding: 10px;
+  background: #f1f1f1;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+.btn-ans:hover {
+  background: #ddd;
+} */
+#check-status {
+  display: flex;
+  justify-content: space-between;
+}
+.game-progress {
+  display: inline-block;
+  font-family: monospace;
+  font-size: 24px;
+  font-weight: bold;
+}

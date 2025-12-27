@@ -19,20 +19,29 @@ export class InteractiveGrid {
   constructor(rows, cols, cell_size, containerId) {
     this.timerId;
     this.intervalTime = 200;
+    this.controller = new AbortController();
+    this.generation = 0;
+    this.lives = 0;
     this.cell_size = cell_size;
     this.rows = rows;
     this.cols = cols;
     this.totalCells = this.rows * this.cols;
-    this.container = document.getElementById(containerId);
+    this.container = document.querySelector(`#${containerId} .grid-container`);
     this.cells = [];
-    this.btnStart = document.getElementById("start");
-    this.btnStart.addEventListener("click", () => this.Active());
-    this.btnStop = document.getElementById("stop");
-    this.btnStop.addEventListener("click", () => this.Passive());
-    this.btnReset = document.getElementById("reset");
-    this.btnReset.addEventListener("click", () => this.Reset());
+    this.btnStart = document.querySelector(`#${containerId} .start`);
+    this.btnStart.addEventListener("click", () => this.Active(), {
+      signal: this.controller.signal,
+    });
+    this.btnStop = document.querySelector(`#${containerId} .stop`);
+    this.btnStop.addEventListener("click", () => this.Passive(), {
+      signal: this.controller.signal,
+    });
+    this.btnReset = document.querySelector(`#${containerId} .reset`);
+    this.btnReset.addEventListener("click", () => this.Reset(), {
+      signal: this.controller.signal,
+    });
     // Gọi hàm tạo lưới ngay khi khởi tạo
-    this.render();
+    // this.render();
   }
 
   render() {
@@ -50,6 +59,7 @@ export class InteractiveGrid {
         this.cells.push(newCell);
       }
     }
+    this.totalCells = this.rows * this.cols;
   }
   calcState(cell, x, y) {
     let count = 0;
@@ -75,11 +85,19 @@ export class InteractiveGrid {
     for (let i = 0; i < this.totalCells; i++) {
       this.cells[i].update();
     }
+    this.generation++;
+  }
+  State(col, row) {
+    if (row < 0 || row >= this.rows || col < 0 || col >= this.cols)
+      return false;
+    return this.cells[row * this.cols + col].state;
   }
   toggleCellState(cell) {
     // Toggle class 'active' (Xanh <-> Vàng)
     cell.cell_body.classList.toggle("active");
     cell.state = !cell.state;
+    if (cell.state) this.lives++;
+    else this.lives--;
   }
   toggleAt(x, y) {
     // Kiểm tra toạ độ có hợp lệ không
@@ -195,9 +213,32 @@ export class InteractiveGrid {
     this.btnReset.disabled = false;
   }
   Reset() {
-    for (let i = 0; i < this.totalCells; i++) {
+    for (let i = 0; i < this.cells.length; i++) {
       this.cells[i].next_state = false;
       this.cells[i].update();
+    }
+  }
+  // Trong file Grid.js
+  mark(x, y) {
+    // 1. Kiểm tra toạ độ hợp lệ
+    if (x < 0 || x >= this.cols || y < 0 || y >= this.rows) return;
+
+    // 2. Tính index trong mảng 1 chiều
+    const index = y * this.cols + x;
+    const targetCell = this.cells[index];
+
+    // 3. Thêm class 'marked' vào phần tử DOM của cell
+    if (targetCell && targetCell.cell_body) {
+      // Nếu muốn bật tắt (toggle) thì dùng .toggle, muốn đánh dấu luôn thì dùng .add
+      targetCell.cell_body.classList.add("marked");
+    }
+  }
+
+  // Bổ sung phương thức unmark để xoá nếu cần
+  unmark(x, y) {
+    const index = y * this.cols + x;
+    if (this.cells[index]) {
+      this.cells[index].cell_body.classList.remove("marked");
     }
   }
 }
