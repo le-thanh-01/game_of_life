@@ -2,7 +2,7 @@ export const ques1 = {
   name: "Question 1",
   description: "Make the 'x' cell live and dead 10 times",
   toolset: [],
-  duration: 5,
+  duration: 600,
   rows: 7,
   cols: 15,
   size: 30,
