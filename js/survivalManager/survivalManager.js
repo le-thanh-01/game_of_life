@@ -17,8 +17,8 @@ export const SurvivalManager = {
   handleTimeOut() {
     // Hàm này được TimeSystem tự gọi khi về 0, dù game có đang chạy hay không
     this.stopGame(); // Dừng mọi thứ
-    Win.showCriticalError();
-    const st = setTimeout(Win.startErrorCascade, 1000);
+    //Win.showCriticalError();
+   // const st = setTimeout(Win.startErrorCascade, 1000);
     document.getElementById("real-time-box").classList.add("hidden");
   },
   startSuvival(i) {
