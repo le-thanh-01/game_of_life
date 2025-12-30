@@ -49,7 +49,7 @@
 /* Tiêu đề và nội dung text */
 .gol-slide h3 {
   margin-bottom: 15px;
-  color: #ffeb3b; /* Màu vàng điểm nhấn */
+  color: #e2ce12; /* Màu vàng điểm nhấn */
 }
 .gol-slide p {
   font-size: 14px;
@@ -171,4 +171,11 @@
 }
 #live {
   color: #ffeb3b;
+}
+#btn-creative-sample {
+  width: 30%;
+  pointer-events: none;
+}
+#btn-creative-sample * {
+  color: #fff;
 }

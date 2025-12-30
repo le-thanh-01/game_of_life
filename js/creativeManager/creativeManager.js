@@ -16,4 +16,9 @@ export function setupCreativeMode(mainGrid) {
     .getElementById("selectBtn")
     .addEventListener("click", () => control.handleSelectCoordinate(Grid));
   setupSidebar(() => Grid.myGrid);
+  document.getElementById("btn-exit").addEventListener("click", () => {
+    Grid.myGrid.container.parentElement.classList.add("hidden");
+    document.querySelector(".controls").classList.add("hidden");
+    document.getElementById("mode-modal").classList.remove("hidden");
+  });
 }

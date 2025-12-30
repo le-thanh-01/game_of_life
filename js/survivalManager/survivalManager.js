@@ -44,7 +44,8 @@ export const SurvivalManager = {
 
     // Hiện Grid
     myGrid.container.parentElement.classList.remove("hidden");
-    myGrid.btnStart.classList.remove("hidden");
+    myGrid.btnStop.classList.add("hidden");
+    myGrid.btnReset.classList.add("hidden");
 
     myGrid.render(); // Vẽ lưới mới
     this.game_stat.textContent = currentQues.stat_check;

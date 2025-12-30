@@ -117,15 +117,15 @@
       <div class="main-content">
         <div id="mode-modal">
           <div class="mode-box">
-            <h2 data-lang="mode_title">Chọn Chế Độ Chơi</h2>
+            <h2 data-lang="mode_title"></h2>
             <div class="mode-buttons">
               <button id="btn-mode-survival" class="mode-btn survival">
-                <h3 data-lang="mode_survival">Sinh Tồn</h3>
-                <p data-lang="desc_survival">Trả lời câu hỏi để sống sót.</p>
+                <h3 data-lang="mode_survival"></h3>
+                <p data-lang="desc_survival"></p>
               </button>
               <button id="btn-mode-creative" class="mode-btn creative">
-                <h3 data-lang="mode_creative">Sáng Tạo</h3>
-                <p data-lang="desc_creative">Tự do vẽ và quan sát.</p>
+                <h3 data-lang="mode_creative"></h3>
+                <p data-lang="desc_creative"></p>
               </button>
             </div>
             <div class="spacer"></div>
@@ -154,6 +154,11 @@
         </div>
         <!-- thay đổi kích thước bảng -->
         <div class="controls hidden">
+          <div class="modal-footer footer-center">
+            <button id="btn-exit" class="btn-primary btn-full">
+              <i id="exit" class="fa-solid fa-left-long"></i>
+            </button>
+          </div>
           <div class="board-input">
             <h2 data-lang="h_coordinates"></h2>
             <div class="input-group">
@@ -389,10 +394,10 @@
                   <div class="demo-grid">
                     <div class="demo-cell alive"></div>
                     <div class="demo-cell alive"></div>
-                    <div class="demo-cell"></div>
+                    <div class="demo-cell alive"></div>
                     <div class="demo-cell"></div>
                     <div class="demo-cell alive"></div>
-                    <div class="demo-cell alive"></div>
+                    <div class="demo-cell"></div>
                     <div class="demo-cell"></div>
                     <div class="demo-cell alive"></div>
                     <div class="demo-cell"></div>
@@ -401,9 +406,9 @@
                 <i class="fa-solid fa-right-long"></i>
                 <div class="guide-cell">
                   <div class="demo-grid">
-                    <div class="demo-cell"></div>
-                    <div class="demo-cell"></div>
-                    <div class="demo-cell"></div>
+                    <div class="demo-cell alive"></div>
+                    <div class="demo-cell alive"></div>
+                    <div class="demo-cell alive"></div>
                     <div class="demo-cell"></div>
                     <div class="demo-cell"></div>
                     <div class="demo-cell"></div>
@@ -473,16 +478,16 @@
                 <li data-lang="li_slide5_ex6"></li>
               </ul>
             </div>
-            <!-- <div class="gol-slide">
-              <h3 data-lang="">Cách chơi</h3>
+            <div class="gol-slide">
+              <h3 data-lang="li_slide6_ex1"></h3>
+              <button id="btn-creative-sample" class="mode-btn creative">
+                <h3 data-lang="mode_creative"></h3>
+                <p data-lang="desc_creative"></p>
+              </button>
               <ul>
-                <li>Bạn có thể lựa chọn chế độ sinh tồn hoặc sáng tạo.</li>
-                <li>Hãy thiết lập trước mô hình trước khi chạy.</li>
-                <li>Click chuột vào ô bất kỳ để Bật/Tắt sự sống.</li>
-                <li>Nhấn nút Start/Run để quan sát sự tiến hóa.</li>
-                <li>Máy của bạn sẽ crack nếu thất bại.</li>
+                <li data-lang="li_slide6_ex2"></li>
               </ul>
-            </div> -->
+            </div>
 
             <button class="nav-btn prev-btn">&#10094;</button>
             <button class="nav-btn next-btn">&#10095;</button>
@@ -493,7 +498,7 @@
               <span class="dot"></span>
               <span class="dot"></span>
               <span class="dot"></span>
-              <!-- <span class="dot"></span> -->
+              <span class="dot"></span>
             </div>
           </div>
         </div>

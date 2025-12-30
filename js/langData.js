@@ -13,6 +13,13 @@ export const translations = {
     cell_size: "Kích thước cell:",
     btn_save_set: "Lưu",
 
+    // Modal Mode
+    mode_title: "Chọn Chế Độ Chơi",
+    mode_survival: "Sinh Tồn",
+    desc_survival: "Trả lời câu hỏi để sống sót.",
+    mode_creative: "Sáng Tạo",
+    desc_creative: "Tự do vẽ và quan sát.",
+
     // User Bar
     hello: "Xin chào",
     btn_logout: "Đăng xuất",
@@ -54,6 +61,10 @@ export const translations = {
     li_slide5_ex4: "Click chuột vào ô bất kỳ để Bật/Tắt sự sống.",
     li_slide5_ex5: "Nhấn nút Start/Run để quan sát sự tiến hóa.",
     li_slide5_ex6: "Máy của bạn sẽ crack nếu thất bại.",
+    //slide 6:
+    li_slide6_ex1: "Chế Độ Sáng Tạo",
+    li_slide6_ex2:
+      "Hãy thử vào Chế Độ Sáng Tạo trước khi vào game để hiểu rõ quy luật và xây dựng một số quần thể mẫu",
 
     //Sidebar
     h_pattern: "Nhập Pattern (RLE)",
@@ -79,6 +90,13 @@ export const translations = {
     // User Bar
     hello: "Hello",
     btn_logout: "Logout",
+
+    // Modal Mode
+    mode_title: "Select Mode",
+    mode_survival: "Survival",
+    desc_survival: "",
+    mode_creative: "Creative",
+    desc_creative: "",
 
     // Game Controls
     h_coordinates: "Dimensions M x N",
@@ -117,7 +135,10 @@ export const translations = {
     li_slide5_ex4: "Click on any cell to toggle Life/Dead.",
     li_slide5_ex5: "Press Start/Run to watch the evolution.",
     li_slide5_ex6: "Your PC will crash if you fail.",
-
+    //slide 6:
+    li_slide6_ex1: "Creative Mode",
+    li_slide6_ex2:
+      "Use Creative Mode to understand the rules and test some patterns",
     //Sidebar
     h_pattern: "Import Pattern (RLE)",
     p_pattern: "Paste RLE code below to draw quickly:",

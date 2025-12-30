@@ -27,7 +27,8 @@ export function checkLoginStatus() {
 
       // 2. Ẩn Modal đi
       loginModal.classList.add("hidden");
-
+      // hiện hướng dẫn ngay
+      document.getElementById("tutorialCard").classList.remove("hidden");
       // 3. (Tùy chọn) Chào mừng
       alert(`Xin chào ${name}, bắt đầu chơi thôi!`);
     } else {
