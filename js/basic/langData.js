@@ -156,6 +156,19 @@ export const translations = {
     li_slide6_ex1: "Trial Mode",
     li_slide6_ex2:
       "Use Trial Mode to understand the rules and test some patterns",
+
+    //info
+    li_info_1: "This website was developed by le-thanh-01.",
+    li_info_2: "References / Sources:",
+    li_info_3:
+      "This website is created for non-commercial purposes and is not intended to disparage, allude to, or relate to any specific individual, organization, or group. Any resemblance to actual persons or entities is purely coincidental.",
+    li_info_4:
+      "The website and all source code are provided 'As-Is' without any warranty of any kind, either express or implied. The author shall not be liable for any data loss, hardware interruption, or damages arising from the use or inability to use this website.",
+    li_info_5:
+      "This website uses the browser's Local Storage to save temporary interface preferences. We do not collect, store on our servers, or distribute any personally identifiable information of the users.",
+    li_info_6:
+      "This project operates on a strictly non-commercial basis and always strives to respect the intellectual property rights of third parties. If you are the rightful owner and discover that the website contains copyright-infringing content, please contact us via email: le6134074@gmail.com.",
+
     //Sidebar
     h_pattern: "Import Pattern (RLE)",
     p_pattern: "Paste RLE code below to draw quickly:",
