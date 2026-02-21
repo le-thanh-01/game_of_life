@@ -1,5 +1,6 @@
 /* Phần Sidebar (Ban đầu đóng) */
 .right-sidebar {
+  z-index: 7010;
   width: 0; /* Mặc định độ rộng bằng 0 */
   background-color: #333;
   /* border-left: 1px solid #444; */

@@ -2,7 +2,7 @@ export const ques1 = {
   name: "Question 1",
   description: "Make the 'x' cell live and dead 10 times",
   toolset: [],
-  duration: 60,
+  duration: 120,
   rows: 7,
   cols: 15,
   size: 30,
@@ -12,7 +12,7 @@ export const ques1 = {
   stat_check: "Times: 0",
   checkWinCondition(myGrid, game_stat) {
     if (myGrid.State(7, 3) !== this.state) {
-      if (this.state) this.times++;
+      this.times++;
       this.state = !this.state;
     }
     game_stat.textContent = "Times: " + this.times;

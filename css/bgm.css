@@ -1,0 +1,10 @@
+#bgm-container {
+  position: absolute;
+  background-color: #fff;
+  top: -99999px;
+  left: -99999px;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none; /* Vô hiệu hóa tính toán sự kiện chuột */
+}

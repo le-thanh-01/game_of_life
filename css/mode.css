@@ -3,7 +3,7 @@
 .mode-box {
   height: 100dvh;
   width: 500px; /* Rộng hơn chút để chứa 2 nút */
-  max-width: 90%;
+  /* max-width: 90%; */
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -18,9 +18,10 @@
 }
 
 .mode-btn {
+  width: 300px;
+  container-type: inline-size;
   min-width: 20vw;
   padding: 10px;
-  border: 2px solid #eee;
   border-radius: 12px;
   background: white;
   cursor: pointer;
@@ -57,9 +58,9 @@
 
   /* 2. Viền 3D: Trên sáng - Dưới tối */
   border-style: solid;
-  border-width: 2px;
-  border-color: var(--light-color) var(--dark-color) var(--dark-color)
-    var(--light-color);
+  border-width: 1px;
+  border-color: var(--light-color-p) var(--dark-color-p) var(--dark-color-p)
+    var(--light-color-p);
 }
 
 .mode-btn.creative:active {

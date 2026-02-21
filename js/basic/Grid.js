@@ -47,6 +47,8 @@ export class InteractiveGrid {
   render() {
     //  Xóa nội dung cũ
     this.container.innerHTML = "";
+    this.lives = 0;
+    this.generation = 0;
     this.cells = []; // Reset mảng lưu trữ
     this.container.style.gridTemplateColumns = `repeat(${this.cols}, ${this.cell_size}px)`;
     this.container.style.gridTemplateRows = `repeat(${this.rows}, ${this.cell_size}px)`;
@@ -218,6 +220,31 @@ export class InteractiveGrid {
       this.cells[i].update();
     }
   }
+  lockCell(x_start, y_start, x_end, y_end) {
+    if (x_start < 0) x_start = 0;
+    if (x_end >= this.cols) x_end = this.cols - 1;
+    if (y_end >= this.rows) y_end = this.rows - 1;
+    if (y_start < 0) y_start = 0;
+    const start_index = y_start * this.cols + x_start;
+    const end_index = y_end * this.cols + x_end;
+    if (start_index < 0 || end_index >= this.totalCells) return;
+    for (let i = start_index; i <= end_index; i++) {
+      if (this.cells[i].x > x_end || this.cells[i].x < x_start) continue;
+      this.cells[i].cell_body.classList.add("grid-disabled");
+    }
+  }
+  unLockCell(x_start, y_start, x_end, y_end) {
+    if (x_start < 0) x_start = 0;
+    if (x_end >= this.cols) x_end = this.cols - 1;
+    if (y_end >= this.rows) y_end = this.rows - 1;
+    if (y_start < 0) y_start = 0;
+    const start_index = y_start * this.cols + x_start;
+    const end_index = y_end * this.cols + x_end;
+    if (start_index < 0 || end_index >= this.totalCells) return;
+    for (let i = start_index; i <= end_index; i++) {
+      this.cells[i].cell_body.classList.remove("grid-disabled");
+    }
+  }
   // Trong file Grid.js
   mark(x, y) {
     // 1. Kiểm tra toạ độ hợp lệ
@@ -240,5 +267,34 @@ export class InteractiveGrid {
     if (this.cells[index]) {
       this.cells[index].cell_body.classList.remove("marked");
     }
+  }
+  destroy() {
+    // 1. NGẮT VÒNG LẶP THỜI GIAN (Interval)
+    // Nếu không ngắt, hàm generate() của object cũ vẫn sẽ chạy ngầm mỗi 200ms
+    if (this.timerId) {
+      clearInterval(this.timerId);
+    }
+
+    // 2. HỦY EVENT LISTENERS TỪ CÁC NÚT BẤM
+    // Phát tín hiệu abort() để gỡ bỏ toàn bộ sự kiện click trên btnStart, btnStop, btnReset
+    this.controller.abort();
+
+    // 3. GIẢI PHÓNG DOM (Document Object Model)
+    // Xóa sạch các thẻ HTML con (các cell_body) khỏi container
+    if (this.container) {
+      this.container.innerHTML = "";
+      this.container.style.gridTemplateColumns = "";
+      this.container.style.gridTemplateRows = "";
+    }
+
+    // 4. GIẢI PHÓNG BỘ NHỚ (Memory Allocation)
+    // Cắt đứt liên kết vòng (circular references) giữa Cell và Grid
+    // Khi mảng này rỗng và DOM bị xóa, Garbage Collector của trình duyệt sẽ tự động thu hồi bộ nhớ của các Cell.
+    this.cells = [];
+
+    // 5. RESET TRẠNG THÁI NÚT BẤM (UX)
+    if (this.btnStart) this.btnStart.disabled = false;
+    if (this.btnStop) this.btnStop.disabled = true;
+    if (this.btnReset) this.btnReset.disabled = false;
   }
 }

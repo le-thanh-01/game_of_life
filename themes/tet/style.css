@@ -1,0 +1,81 @@
+.tet_left img,
+.tet_right img {
+  width: 100%;
+  height: auto;
+}
+.tet_left,
+.tet_right {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  width: 191px;
+  pointer-events: none;
+}
+.tet_right {
+  left: auto;
+  right: 0;
+  width: 191px;
+}
+.tet_bottom {
+  position: fixed;
+  bottom: 0;
+  left: 80px;
+  z-index: 99;
+  width: 320px;
+  pointer-events: none;
+}
+.tet_left,
+.tet_right,
+.tet_bottom {
+  z-index: 501;
+}
+/* @media (max-width: 1331px) {
+   {
+    display: none !important;
+  }
+} */
+.login-box,
+.app-wrapper,
+html {
+  background: red !important;
+}
+
+.gold-coin * {
+  width: 20px;
+  height: auto;
+}
+.decor {
+  position: relative;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}
+.decor * {
+  position: absolute;
+  pointer-events: none;
+}
+.peach-blossom-decor {
+  align-self: self-start;
+  float: left;
+}
+.peach-blossom-decor * {
+  top: -48px;
+  left: -10px;
+  width: 110cqw;
+  height: 75cqw;
+}
+.red-envelope-decor {
+  align-self: self-end;
+  /* margin-left: auto; */
+  float: right;
+}
+.lantern {
+  align-self: self-start;
+  float: left;
+}
+.lantern * {
+  top: 30cqw;
+}

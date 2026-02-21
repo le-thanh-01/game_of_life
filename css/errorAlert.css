@@ -1,3 +1,5 @@
+/* Font chữ chuẩn Windows */
+/* @import url("https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600&display=swap"); */
 /* --- Khung chung --- */
 .win-dialog {
   position: fixed;
@@ -110,3 +112,100 @@
   outline: 1px dotted black;
   outline-offset: -5px;
 }
+
+/* BDOS */
+
+/* --- Container chính phủ kín màn hình --- */
+.win10-bsod {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* Mã màu xanh chuẩn của BSOD Win10 */
+  background-color: #0078d7;
+  color: white;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  z-index: 999998; /* Đảm bảo đè lên mọi thứ */
+  cursor: none;
+  user-select: none; /* Không cho bôi đen chữ */
+
+  /* Căn chỉnh nội dung */
+  padding: 100px 0 0 120px; /* Padding tương đối theo màn hình */
+  box-sizing: border-box;
+}
+
+.bsod-container {
+  width: 900px;
+  min-width: 900px;
+}
+
+/* --- Các thành phần chi tiết --- */
+.sad-emoticon {
+  font-size: 160px; /* Kích thước rất lớn */
+  font-weight: 300; /* Nét mảnh */
+  margin-bottom: 40px;
+  line-height: 1;
+}
+
+.main-message {
+  font-size: 26px;
+  font-weight: 400;
+  margin-bottom: 30px;
+  line-height: 1.4;
+  padding-right: 240px;
+}
+
+.percentage-text {
+  font-size: 26px;
+  margin-bottom: 50px;
+}
+
+/* Khu vực bên dưới (QR + Info) */
+.bottom-details {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px; /* Khoảng cách giữa QR và chữ */
+  min-width: 600px;
+}
+
+.bsod-qr {
+  width: 110px;
+  height: 110px;
+  background-color: white; /* Placeholder nếu ảnh lỗi */
+  image-rendering: pixelated; /* Để QR trông sắc nét */
+  flex-shrink: 0;
+}
+
+.stop-code-info {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.stop-code-info p {
+  margin: 5px 0;
+}
+
+.stop-code-bold {
+  font-weight: 600; /* In đậm mã lỗi */
+}
+
+/* Responsive cho màn hình nhỏ
+@media (max-width: 900px) {
+  .win10-bsod {
+    padding-left: 5vw;
+    padding-right: 5vw;
+    align-items: flex-start;
+    padding-top: 50px;
+  }
+  .sad-emoticon {
+    font-size: 100px;
+  }
+  .main-message {
+    font-size: 20px;
+  }
+  .bottom-details {
+    flex-direction: column;
+    gap: 20px;
+  }
+} */

@@ -1,5 +1,5 @@
-import { setupCreativeMode } from "./creativeManager/creativeManager.js";
-import { SurvivalManager } from "./survivalManager/survivalManager.js";
+import { setupCreativeMode } from "../creativeManager/creativeManager.js";
+import { SurvivalManager } from "../survivalManager/survivalManager.js";
 
 // Thêm vào trong Object UserSystem hoặc tạo module mới ModeSystem
 export const ModeSystem = {
@@ -9,18 +9,19 @@ export const ModeSystem = {
     btnSurvival: document.getElementById("btn-mode-survival"),
 
     // Các khu vực giao diện cần ẩn/hiện
+    logo: document.querySelector(".modal-header"),
     controlsArea: document.querySelector(".controls"),
     questionArea: document.querySelector(".question"),
-    timerFloat: document.getElementById("game-timer-box"), // ID của đồng hồ đếm ngược
+    timerFloat: document.getElementById("game-timer-box-0"), // ID của đồng hồ đếm ngược
   },
 
-  init(myGrid) {
+  init() {
     // Gắn sự kiện click
     this.els.btnCreative.addEventListener("click", () =>
-      this.setMode("creative", myGrid)
+      this.setMode("creative"),
     );
     this.els.btnSurvival.addEventListener("click", () =>
-      this.setMode("survival", myGrid)
+      this.setMode("survival"),
     );
   },
 
@@ -29,10 +30,18 @@ export const ModeSystem = {
     this.els.modal.classList.remove("hidden");
   },
 
-  setMode(mode, myGrid) {
+  setMode(mode) {
     // 1. Ẩn bảng chọn mode đi
     this.els.modal.classList.add("hidden");
-
+    this.els.logo.classList.add("hidden");
+    //Toàn màn hình
+    if (!document.fullscreenElement) {
+      // requestFullscreen là một Promise
+      // , nên có thể bắt lỗi nếu trình duyệt chặn
+      document.documentElement.requestFullscreen().catch((err) => {
+        alert(`Lỗi không thể bật chế độ toàn màn hình: ${err.message}`);
+      });
+    }
     if (mode === "creative") {
       console.log("Mode: Creative");
 
@@ -42,7 +51,7 @@ export const ModeSystem = {
       // ẨN Question & Timer
       this.els.questionArea.classList.add("hidden");
       this.els.timerFloat.classList.add("hidden");
-      setupCreativeMode(myGrid);
+      setupCreativeMode();
     } else if (mode === "survival") {
       console.log("Mode: Survival");
 

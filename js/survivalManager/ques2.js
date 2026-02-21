@@ -1,6 +1,6 @@
 export const ques2 = {
   name: "Question 2",
-  description: "Make 8000 lives",
+  description: "Make 4000 lives",
   toolset: [],
   duration: 60,
   rows: 9,
@@ -12,7 +12,7 @@ export const ques2 = {
   checkWinCondition(myGrid, game_stat) {
     this.lives += myGrid.lives;
     game_stat.textContent = "Lives: " + this.lives;
-    if (this.lives >= 8000) return 1;
+    if (this.lives >= 4000) return 1;
     return 0;
   },
 };

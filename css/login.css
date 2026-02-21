@@ -3,6 +3,9 @@
 #login-modal {
   z-index: 500;
 }
+.modal-header {
+  z-index: 502;
+}
 .login-box {
   background: white;
   padding: 25px;
@@ -59,6 +62,6 @@
   flex-direction: column;
 }
 
-#login {
+#login_submit {
   color: #000;
 }

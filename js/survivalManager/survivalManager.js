@@ -1,12 +1,23 @@
 // js/SurvivalManager.js
 import { ques1 } from "./ques1.js";
 import { ques2 } from "./ques2.js";
-import { InteractiveGrid } from "../Grid.js"; // Instance grid chính
-import { TimeSystem } from "../timer.js";
+import { ques3 } from "./ques3.js";
+import { InteractiveGrid } from "../basic/Grid.js"; // Instance grid chính
+import { TimeSystem } from "../basic/timer.js";
 import * as Win from "./errorAlert.js";
-const questions = [ques1, ques2];
-
+import { PATTERN_LIBRARY } from "./toolset.js";
+import { endGame } from "./endGame.js";
+const questions = [ques1, ques2, ques3];
+const patternIndex = {
+  Square: 0,
+  Glider: 1,
+  LWSS: 2,
+  "Gosper Glider Gun": 3,
+  Pulsar: 4,
+  "Eater 1": 5,
+};
 export const SurvivalManager = {
+  max_ques: questions.length,
   quesIndex: 0,
   gameInterval: null,
   startGen: null,
@@ -14,24 +25,30 @@ export const SurvivalManager = {
   game_stat: document.querySelector(".game-progress p"),
   myGrid: new InteractiveGrid(7, 15, 30, "grid-survival"),
   // Trong vòng lặp game (khi bấm Start)
+
   handleTimeOut() {
     // Hàm này được TimeSystem tự gọi khi về 0, dù game có đang chạy hay không
     this.stopGame(); // Dừng mọi thứ
-    Win.showCriticalError();
-    const st = setTimeout(Win.startErrorCascade, 1000);
-    document.getElementById("real-time-box").classList.add("hidden");
+    setTimeout(() => {
+      document.getElementById("game-over-notice").classList.remove("hidden");
+      TimeSystem.startCountdown(5, this.gameOver.bind(this), 1);
+    }, 2000);
   },
   startSuvival(i) {
-    (this.quesIndex = i), this.loadLevel(questions[i]);
+    this.quesIndex = i;
+    this.loadLevel(questions[i]);
   },
   loadLevel(currentQues) {
     const myGrid = this.myGrid;
-
     // 1. Reset trạng thái Grid & Giao diện
-    myGrid.controller.abort(); // Cắt sạch sự kiện cũ trên Grid (vẽ vời...)
+    // Bỏ sự kiện gắn mặc định lên nút start
+    myGrid.controller.abort();
     this.isPlaying = false;
 
     // Hiển thị đề bài
+    document.querySelector(".fa-hourglass-half").classList.remove("hidden");
+    document.getElementById("game-timer").classList.remove("hidden");
+    document.querySelector(".fa-check").classList.add("hidden");
     document.getElementById("lbl_question").textContent = currentQues.name;
     const qText = document.getElementById("question-text");
     if (qText) qText.textContent = currentQues.description;
@@ -41,14 +58,26 @@ export const SurvivalManager = {
     myGrid.cols = currentQues.cols;
     myGrid.cell_size = currentQues.size;
     myGrid.generation = 0;
-
     // Hiện Grid
     myGrid.container.parentElement.classList.remove("hidden");
     myGrid.btnStop.classList.add("hidden");
     myGrid.btnReset.classList.add("hidden");
-
+    myGrid.btnStart.disabled = false;
     myGrid.render(); // Vẽ lưới mới
+    myGrid.unLockCell(0, 0, myGrid.cols, myGrid.rows);
     this.game_stat.textContent = currentQues.stat_check;
+    if (currentQues.toolset) {
+      currentQues.toolset.forEach((tool) => {
+        const item = PATTERN_LIBRARY[patternIndex[tool.name]];
+        myGrid.parseAndDrawRLE(tool.x, tool.y, item.rle);
+        myGrid.lockCell(
+          tool.x - 1,
+          tool.y - 1,
+          tool.x + item.size_x,
+          tool.y + item.size_y,
+        );
+      });
+    }
     if (currentQues.mark) {
       currentQues.mark.forEach((cell) => {
         myGrid.mark(cell.x, cell.y);
@@ -58,7 +87,7 @@ export const SurvivalManager = {
     // Bind(this) để đảm bảo 'this' trong handleTimeOut trỏ đúng về SurvivalManager
     TimeSystem.startCountdown(
       currentQues.duration,
-      this.handleTimeOut.bind(this)
+      this.handleTimeOut.bind(this),
     );
 
     // 3. Gắn sự kiện nút Start (Dùng cơ chế Handler để tránh chồng sự kiện)
@@ -70,6 +99,7 @@ export const SurvivalManager = {
     this.currentHandler = () => {
       if (this.isPlaying) return; // Tránh bấm start 2 lần
       this.isPlaying = true;
+      myGrid.btnStart.disabled = true;
       myGrid.container.classList.add("grid-disabled");
       this.runGameLoop(myGrid, currentQues);
     };
@@ -80,24 +110,34 @@ export const SurvivalManager = {
   runGameLoop(myGrid, currentQues) {
     if (!this.isPlaying) return;
 
-    // 1. Tính toán thế hệ mới
-    myGrid.generate();
-
-    // 2. CHECK WIN/LOSS (Chỉ check trong vòng lặp)
+    // 1. CHECK WIN/LOSS (Chỉ check trong vòng lặp)
     // Lúc này không cần check TimeSystem nữa vì callback đã lo rồi
     const result = currentQues.checkWinCondition(myGrid, this.game_stat);
-
+    // 2. Tính toán thế hệ mới
+    myGrid.generate();
     if (result) {
       this.stopGame();
 
       if (result === 1) {
+        if (this.quesIndex + 2 > this.max_ques)
+          setTimeout(() => this.gameComplete(), 3000);
+        else
+          setTimeout(() => {
+            // Gọi đệ quy startSuvival với index mới
+            this.startSuvival(this.quesIndex + 1);
+          }, 3000);
         setTimeout(() => {
-          // Gọi đệ quy startSuvival với index mới
-          this.startSuvival(this.quesIndex + 1);
-        }, 5000);
+          document.querySelector(".fa-hourglass-half").classList.add("hidden");
+          document.getElementById("game-timer").classList.add("hidden");
+          document.querySelector(".fa-check").classList.remove("hidden");
+        }, 1000);
       } else {
-        Win.showCriticalError();
-        const st = setTimeout(Win.startErrorCascade, 1000);
+        setTimeout(() => {
+          document
+            .getElementById("game-over-notice")
+            .classList.remove("hidden");
+          TimeSystem.startCountdown(5, this.gameOver.bind(this), 1);
+        }, 2000);
       }
       return;
     }
@@ -105,7 +145,7 @@ export const SurvivalManager = {
     // 3. Loop tiếp
     this.gameInterval = setTimeout(
       () => this.runGameLoop(myGrid, currentQues),
-      myGrid.intervalTime
+      myGrid.intervalTime,
     );
   },
 
@@ -114,5 +154,14 @@ export const SurvivalManager = {
     clearTimeout(this.gameInterval);
     TimeSystem.stopCountdown();
     this.myGrid.container.classList.remove("grid-disabled");
+  },
+  gameOver() {
+    document.querySelector(".loading-spinner").style.animationPlayState =
+      "paused";
+    Win.startError();
+  },
+  gameComplete() {
+    document.querySelector(".win-notice").classList.remove("hidden");
+    endGame();
   },
 };

@@ -57,14 +57,16 @@ export const TimeSystem = {
 
     elDate.textContent = dateString;
   },
-  startCountdown(seconds, onTimeoutCallback) {
+  startCountdown(seconds, onTimeoutCallback, index = 0) {
     this.time_up = false;
     // Hiện đồng hồ đếm ngược lên (nếu đang ẩn)
-    document.getElementById("game-timer-box").classList.remove("hidden");
+    document
+      .getElementById(`game-timer-box-${index}`)
+      .classList.remove("hidden");
 
     this.stopCountdown();
-    const el = document.getElementById("game-timer");
-    const box = document.getElementById("game-timer-box");
+    const el = document.querySelector(`#game-timer-box-${index} #game-timer`);
+    const box = document.getElementById(`game-timer-box-${index}`);
 
     let timeLeft = seconds;
 

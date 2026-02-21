@@ -12,7 +12,8 @@
 @import "mode.css";
 @import "ques.css";
 @import "errorAlert.css";
-
+@import "notice.css";
+@import "endGame.css";
 /* Căn giữa và làm đẹp khung nhập liệu */
 body {
   font-family: Arial, sans-serif;
@@ -36,4 +37,5 @@ body {
   align-items: center;
   transition: all 0.4s ease;
   flex-grow: 1;
+  /* overflow: hidden; */
 }

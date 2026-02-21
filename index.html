@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,90 +8,126 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
     />
     <link
+      class="favicon"
+      data-filename="apple-icon-57x57.png"
       rel="apple-touch-icon"
       sizes="57x57"
-      href="./ico/apple-icon-57x57.png"
+      href="./themes/default/ico/apple-icon-57x57.png"
     />
     <link
+      class="favicon"
+      data-filename="apple-icon-60x60.png"
       rel="apple-touch-icon"
       sizes="60x60"
-      href="./ico/apple-icon-60x60.png"
+      href="./themes/default/ico/apple-icon-60x60.png"
     />
     <link
+      class="favicon"
+      data-filename="apple-icon-72x72.png"
       rel="apple-touch-icon"
       sizes="72x72"
-      href="./ico/apple-icon-72x72.png"
+      href="./themes/default/ico/apple-icon-72x72.png"
     />
     <link
+      class="favicon"
+      data-filename="apple-icon-76x76.png"
       rel="apple-touch-icon"
       sizes="76x76"
-      href="./ico/apple-icon-76x76.png"
+      href="./themes/default/ico/apple-icon-76x76.png"
     />
     <link
+      class="favicon"
+      data-filename="apple-icon-114x114.png"
       rel="apple-touch-icon"
       sizes="114x114"
-      href="./ico/apple-icon-114x114.png"
+      href="./themes/default/ico/apple-icon-114x114.png"
     />
     <link
+      class="favicon"
+      data-filename="apple-icon-120x120.png"
       rel="apple-touch-icon"
       sizes="120x120"
-      href="./ico/apple-icon-120x120.png"
+      href="./themes/default/ico/apple-icon-120x120.png"
     />
     <link
+      class="favicon"
+      data-filename="apple-icon-144x144.png"
       rel="apple-touch-icon"
       sizes="144x144"
-      href="./ico/apple-icon-144x144.png"
+      href="./themes/default/ico/apple-icon-144x144.png"
     />
     <link
+      class="favicon"
+      data-filename="apple-icon-152x152.png"
       rel="apple-touch-icon"
       sizes="152x152"
-      href="./ico/apple-icon-152x152.png"
+      href="./themes/default/ico/apple-icon-152x152.png"
     />
     <link
+      class="favicon"
+      data-filename="apple-icon-180x180.png"
       rel="apple-touch-icon"
       sizes="180x180"
-      href="./ico/apple-icon-180x180.png"
+      href="./themes/default/ico/apple-icon-180x180.png"
     />
     <link
+      id="favicon"
+      data-filename="android-icon-192x192.png"
       rel="icon"
       type="image/png"
       sizes="192x192"
-      href="./ico/android-icon-192x192.png"
+      href="./themes/default/ico/android-icon-192x192.png"
     />
     <link
+      class="favicon"
+      data-filename="favicon-32x32.png"
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="./ico/favicon-32x32.png"
+      href="./themes/default/ico/favicon-32x32.png"
     />
     <link
+      class="favicon"
+      data-filename="favicon-96x96.png"
       rel="icon"
       type="image/png"
       sizes="96x96"
-      href="./ico/favicon-96x96.png"
+      href="./themes/default/ico/favicon-96x96.png"
     />
     <link
+      class="favicon"
+      data-filename="favicon-16x16.png"
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href="./ico/favicon-16x16.png"
+      href="./themes/default/ico/favicon-16x16.png"
     />
-    <link rel="manifest" href="./ico/manifest.json" />
+    <link
+      class="favicon"
+      data-filename="manifest.json"
+      rel="manifest"
+      href="./themes/default/ico/manifest.json"
+    />
+    <link id="theme-style" rel="stylesheet" href="./themes/default/style.css" />
     <meta name="msapplication-TileColor" content="#ffffff" />
-    <meta name="msapplication-TileImage" content="./ico/ms-icon-144x144.png" />
+    <meta
+      id="favicon"
+      name="msapplication-TileImage"
+      content="./themes/default/ico/ms-icon-144x144.png"
+    />
     <meta name="theme-color" content="#ffffff" />
     <link rel="stylesheet" href="./css/style.css" />
+
     <title>Game of life</title>
   </head>
   <body>
+    <div id="bgm-container"></div>
+    <div class="modal-header header-center">
+      <h3 data-lang="">GAME OF LIFE</h3>
+    </div>
     <!-- phần đăng nhập -->
     <div id="login-modal" class="modal-overlay hidden">
       <div class="login-box">
-        <div class="modal-header header-center">
-          <img src="./ico/android-icon-96x96.png" alt="game of life" />
-          <h3 data-lang="">GAME OF LIFE</h3>
-        </div>
-
         <div class="modal-body">
           <div class="input-group login-input">
             <label data-lang="lbl_username" for="username"></label>
@@ -105,7 +141,7 @@
 
               <div class="modal-footer footer-center">
                 <button id="btn-submit-login" class="btn-primary btn-full">
-                  <i id="login" class="fa-solid fa-right-long"></i>
+                  <i id="login_submit" class="fa-solid fa-right-long"></i>
                 </button>
               </div>
             </div>
@@ -136,10 +172,12 @@
             <h3 id="lbl_question"></h3>
             <p id="question-text"></p>
             <div id="check-status">
-              <div id="game-timer-box" class="timer-float-top hidden">
+              <div id="game-timer-box-0" class="timer-float-top hidden">
                 <i class="fa-solid fa-hourglass-half"></i>
                 <span id="game-timer">00:00</span>
+                <i class="fa-solid fa-check reveal-ltr hidden"></i>
               </div>
+              <div class="blank"></div>
               <div class="game-progress"><p>fferfrf</p></div>
             </div>
           </div>
@@ -213,15 +251,23 @@
           </div>
         </div>
         <!-- =========================================================== -->
-        <button id="btn-setting" class="icon-btn" data-title="btn_setting">
+        <button
+          id="btn-setting"
+          class="icon-rotate icon-btn"
+          data-title="btn_setting"
+        >
           <i class="fa-solid fa-gear"></i>
         </button>
 
-        <button id="btn-guide" class="icon-btn" data-title="btn_guide">
+        <button
+          id="btn-guide"
+          class="icon-btn icon-base"
+          data-title="btn_guide"
+        >
           <i class="fa-regular fa-circle-question"></i>
         </button>
 
-        <button id="btn-list" class="icon-btn" data-title="btn_list">
+        <button id="btn-list" class="icon-btn icon base" data-title="btn_list">
           <i class="fa-solid fa-bars"></i>
         </button>
         <!-- phần cài đặt -->
@@ -233,6 +279,14 @@
                 ><i class="fa-solid fa-xmark"></i
               ></span>
             </div>
+            <div class="vol-area">
+              <button class="vol-btn vol-on icon-base hidden">
+                <i class="fa-solid fa-volume-high"></i>
+              </button>
+              <button class="vol-btn vol-off icon-base">
+                <i class="fa-solid fa-volume-xmark"></i>
+              </button>
+            </div>
             <button
               id="btn-lang-toggle"
               class="lang-btn"
@@ -240,6 +294,7 @@
             >
               <span id="lang-icon">🇻🇳</span>
             </button>
+
             <div class="modal-body">
               <div class="input-group">
                 <label data-lang="lbl_t_duration" for="modal-rows"></label>
@@ -517,7 +572,8 @@
           <p data-lang="p_pattern"></p>
 
           <div class="input-group">
-            <label data-lang="lbl_start"></label><br />
+            <p data-lang="lbl_start"></p>
+            <br />
             <input type="number" id="coordx" placeholder="x" value="0" />
             <input type="number" id="coordy" placeholder="y" value="0" />
           </div>
@@ -540,6 +596,48 @@
           ></button>
         </div>
       </div>
+      <!-- thông báo win -->
+      <div class="modal-overlay win-notice hidden">
+        <div class="win-container">
+          <h2 id="you-win">YOU WIN</h2>
+
+          <div class="envelope-wrapper jumping" id="envelopeWrapper">
+            <div class="envelope-flap" id="envelopeFlap"></div>
+            <div class="envelope-body"></div>
+          </div>
+
+          <button id="openBtn">OPEN</button>
+        </div>
+
+        <div class="light-burst-container" id="lightContainer">
+          <div class="glow-center"></div>
+        </div>
+      </div>
+      <!-- thông báo game over -->
+      <div id="game-over-notice" class="modal-overlay hidden">
+        <div class="notification-card">
+          <div class="card-header">
+            <h3 class="card-title">GAME OVER</h3>
+          </div>
+          <div class="countdown-notice">
+            <span class="card-description" data-lang="err_notice"> </span>
+            <span id="game-timer-box-1" class="timer-float-top">
+              <span id="game-timer">00:00</span>
+            </span>
+            <div class="loading-spinner">
+              <div class="load-dot load-dot-1"></div>
+              <div class="load-dot load-dot-2"></div>
+              <div class="load-dot load-dot-3"></div>
+              <div class="load-dot load-dot-4"></div>
+              <div class="load-dot load-dot-5"></div>
+              <div class="load-dot load-dot-6"></div>
+              <div class="load-dot load-dot-7"></div>
+              <div class="load-dot load-dot-8"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- thông báo lỗi XP -->
       <div id="critical-error" class="win-dialog hidden">
         <div class="win-title-bar" id="error-drag-handle">
           <div class="title-text">Microsoft Windows</div>
@@ -550,7 +648,7 @@
           <div class="icon-zone">
             <div class="red-x-icon">
               <img
-                src="./ico/download.png"
+                src="./img/x_button.png"
                 alt="Error Icon"
                 class="xp-error-icon"
               />
@@ -571,7 +669,52 @@
           </div>
         </div>
       </div>
+      <!-- BDOS -->
+      <div id="win10-bsod-overlay" class="win10-bsod hidden">
+        <div class="bsod-container">
+          <div class="sad-emoticon">:(</div>
+
+          <p class="main-message">
+            Your PC ran into a problem and needs to restart. We're just
+            collecting some error info, and then we'll restart for you.
+          </p>
+
+          <p class="percentage-text">
+            <span id="bsod-progress">0</span>% complete
+          </p>
+
+          <div class="bottom-details">
+            <img
+              src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=Windows Stop Code CRITICAL_PROCESS_DIED&color=ffffff&bgcolor=0078D7"
+              alt="QR Code"
+              class="bsod-qr"
+            />
+
+            <div class="stop-code-info">
+              <p>
+                For more information about this issue and possible fixes, visit
+                https://www.windows.com/stopcode
+              </p>
+              <br />
+              <p>If you call a support person, give them this info:</p>
+              <p>
+                Stop code:
+                <span class="stop-code-bold">CRITICAL_PROCESS_DIED</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    <div id="black-div" class="hidden"></div>
     <script type="module" src="./js/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script
+      src="https://anonyviet.com/resource/ruoibay/ruoi.js"
+      type="text/javascript"
+      var_1="true"
+      var_2="false"
+      var_3="false"
+    ></script>
   </body>
 </html>

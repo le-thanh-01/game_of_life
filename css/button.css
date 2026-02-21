@@ -25,7 +25,8 @@ button:disabled {
   top: 5em;
 }
 #btn-guide,
-#btn-setting {
+#btn-setting,
+#btn-list {
   background: none;
   z-index: 900;
 }
@@ -35,11 +36,10 @@ button:disabled {
   margin-left: auto;
   top: 1em;
 }
-
-#btn-guide:hover,
-#btn-list:hover {
-  transform: scale(1.15);
+#btn-list:disabled {
+  background: none;
 }
+
 .floating-btn {
   position: fixed;
   top: 20px;
@@ -96,4 +96,13 @@ button:disabled {
   color: white;
   border: none;
   cursor: pointer;
+}
+
+.vol-btn {
+  background: none;
+  box-shadow: none;
+  margin-bottom: 10px;
+}
+.vol-btn:hover {
+  background: none;
 }

@@ -12,10 +12,12 @@
   margin-right: auto;
   margin-left: 2em;
 }
-
-.icon-btn:hover {
+.icon-rotate:hover {
   transform: rotate(90deg) scale(1.15);
   background-color: #fff;
+}
+.icon-base:hover {
+  transform: scale(1.15);
 }
 .close-icon {
   cursor: pointer;

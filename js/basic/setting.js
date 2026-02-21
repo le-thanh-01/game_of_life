@@ -1,5 +1,6 @@
 import { translations } from "./langData.js"; // Nhập từ điển
 import { TimeSystem } from "./timer.js";
+import { Grid } from "../creativeManager/creativeManager.js";
 //Phần Setting
 // Các phần tử DOM cần dùng
 const els = {
@@ -14,7 +15,7 @@ const els = {
   inputCols: document.getElementById("modal-cols"),
 };
 
-export function setupEvents(Grid) {
+export function setupEvents() {
   // --- MỞ MODAL ---
   els.btnSetting.addEventListener("click", () => {
     els.modal.classList.remove("hidden");
@@ -39,7 +40,7 @@ export function setupEvents(Grid) {
   els.btnSave.addEventListener("click", () => {
     const interval = parseInt(els.inputRows.value);
     const csize = parseInt(els.inputCols.value);
-    const myGrid = Grid();
+    const myGrid = Grid.myGrid;
     if (interval >= 100 && csize >= 10) {
       myGrid.intervalTime = interval;
       myGrid.cell_size = csize;
@@ -53,7 +54,7 @@ export function setupEvents(Grid) {
 
 // --- HỆ THỐNG NGÔN NGỮ ---
 const LanguageSystem = {
-  currentLang: "en", // Mặc định
+  currentLang: "vi", // Mặc định
 
   init() {
     // 1. Lấy ngôn ngữ đã lưu trong localStorage (nếu có)

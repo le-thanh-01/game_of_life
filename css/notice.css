@@ -1,0 +1,167 @@
+/* Styles cho thẻ thông báo (modal) */
+.notification-card {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 16px; /* Bo tròn góc */
+  /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);  */
+  width: 100%;
+  max-width: 480px; /* Chiều rộng tối đa */
+  /* box-sizing: border-box; */
+}
+
+/* Phần header chứa icon và tiêu đề */
+.card-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+/* Icon cảnh báo màu vàng */
+/* .warning-icon {
+  width: 36px;
+  height: 36px;
+  background-color: #fbc02d; 
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 22px;
+  margin-right: 15px;
+  flex-shrink: 0;
+} */
+
+/* Tiêu đề */
+.card-title {
+  margin-top: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+.countdown-notice {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.countdown-notice span {
+  font-size: 20px;
+}
+.countdown-notice span:first-child {
+  margin-right: 10px;
+}
+/* Nội dung mô tả */
+.card-description {
+  color: #5f6368;
+  font-size: 16px;
+}
+
+/* ----- Hiệu ứng Loading Spinner ----- */
+.loading-spinner {
+  width: 80px; /* Kích thước tổng thể của spinner */
+  height: 80px;
+  /* position: relative; */
+  margin-right: 0; /* Căn giữa spinner */
+  margin-left: auto;
+  animation: spin 1.2s steps(8) infinite; /* Animation quay */
+}
+
+/* Các chấm tròn */
+.load-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Tạo hình chấm tròn bằng pseudo-element ::before */
+.load-dot::before {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  background-color: #d32f2f; /* Màu đỏ */
+  border-radius: 50%;
+}
+
+/* Định vị và kích thước từng chấm để tạo hình vòng tròn và hiệu ứng đuôi */
+.load-dot-1 {
+  transform: rotate(0deg);
+}
+.load-dot-1::before {
+  width: 16px;
+  height: 16px;
+} /* Chấm lớn nhất */
+
+.load-dot-2 {
+  transform: rotate(45deg);
+  opacity: 0.9;
+}
+.load-dot-2::before {
+  width: 14px;
+  height: 14px;
+}
+
+.load-dot-3 {
+  transform: rotate(90deg);
+  opacity: 0.8;
+}
+.load-dot-3::before {
+  width: 12px;
+  height: 12px;
+}
+
+.load-dot-4 {
+  transform: rotate(135deg);
+  opacity: 0.7;
+}
+.load-dot-4::before {
+  width: 11px;
+  height: 11px;
+}
+
+.load-dot-5 {
+  transform: rotate(180deg);
+  opacity: 0.6;
+}
+.load-dot-5::before {
+  width: 10px;
+  height: 10px;
+}
+
+.load-dot-6 {
+  transform: rotate(225deg);
+  opacity: 0.5;
+}
+.load-dot-6::before {
+  width: 9px;
+  height: 9px;
+}
+
+.load-dot-7 {
+  transform: rotate(270deg);
+  opacity: 0.4;
+}
+.load-dot-7::before {
+  width: 8px;
+  height: 8px;
+}
+
+.load-dot-8 {
+  transform: rotate(315deg);
+  opacity: 0.3;
+}
+.load-dot-8::before {
+  width: 7px;
+  height: 7px;
+} /* Chấm nhỏ nhất và mờ nhất */
+
+/* Keyframes cho animation quay */
+@keyframes spin {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}

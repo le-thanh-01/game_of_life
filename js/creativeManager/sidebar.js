@@ -10,6 +10,7 @@ function toggleSidebar() {
 
 // Gán sự kiện
 export function setupSidebar(Grid) {
+  listBtn.disabled = false;
   listBtn.addEventListener("click", toggleSidebar);
   closeBtn.addEventListener("click", toggleSidebar);
 

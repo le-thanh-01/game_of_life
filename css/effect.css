@@ -8,3 +8,42 @@
 .grid-disabled {
   pointer-events: none;
 }
+
+#black-div {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999999;
+  width: 100vw;
+  height: 100vh;
+  /* Không dùng đen tuyệt đối, dùng màu than chì rất tối */
+  background-color: #0c0c0c;
+
+  /* Tạo hiệu ứng vignette (tối góc) để tạo chiều sâu */
+  /* inset: đổ bóng vào trong */
+  /* 0 0 150px: độ lan của bóng rất rộng */
+  /* rgba(0,0,0,0.9): màu đen gần như trong suốt ở tâm */
+  box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.9);
+
+  /* Bo góc nhẹ giống màn hình thật */
+}
+
+/* Định nghĩa lớp hiệu ứng */
+.reveal-ltr {
+  /* Bắt buộc phải là khối nội tuyến để clip-path tính toán đúng kích thước hộp (bounding box) */
+  display: inline-block;
+
+  /* Trạng thái t = 0: Cắt 100% diện tích từ bên phải */
+  clip-path: inset(0 100% 0 0);
+
+  /* Thực thi hàm nội suy (animation) trong 0.5 giây */
+  animation: wipe-in-right 0.5s ease-out forwards;
+}
+
+/* Định nghĩa khung hình chuyển động (Keyframes) */
+@keyframes wipe-in-right {
+  to {
+    /* Trạng thái t = end: Không cắt phần nào */
+    clip-path: inset(0 0 0 0);
+  }
+}
