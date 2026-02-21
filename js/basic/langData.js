@@ -68,6 +68,17 @@ export const translations = {
     li_slide6_ex2:
       "Hãy thử vào Chế Độ Thử nghiệm trước khi vào game để hiểu rõ quy luật và xây dựng một số quần thể mẫu",
 
+    //info
+    li_info_1: "Trang web được xây dựng bởi le-thanh-01",
+    li_info_2: "Nguồn tham khảo:",
+    li_info_3:
+      "Trang web được tạo với mục đích phi thương mại và không nhằm mục đích miệt thị, ám chỉ, miệt thị hay liên quan đến bất kỳ cá nhân, tổ chức, tập thể cụ thể nào. Tất cả sự trùng hợp đều chỉ là ngẫu nhiên.",
+    li_info_4:
+      "Trang web và toàn bộ mã nguồn được cung cấp theo nguyên trạng (As-Is) mà không có bất kỳ sự bảo đảm nào, dù tường minh hay ngầm định. Tác giả không chịu trách nhiệm cho bất kỳ sự cố mất mát dữ liệu, gián đoạn phần cứng hay thiệt hại nào phát sinh từ việc sử dụng hoặc không thể sử dụng trang web này.",
+    li_info_5:
+      "Trang web này sử dụng bộ nhớ cục bộ (Local Storage) của trình duyệt để lưu trữ các tùy chọn giao diện tạm thời. Chúng tôi không thu thập, lưu trữ trên máy chủ, hay phân phối bất kỳ dữ liệu định danh cá nhân nào của người dùng.",
+    li_info_6:
+      "Dự án này hoạt động hoàn toàn phi thương mại và luôn nỗ lực tôn trọng quyền sở hữu trí tuệ của các bên thứ ba. Nếu bạn là chủ sở hữu hợp pháp và phát hiện trang web có chứa nội dung vi phạm bản quyền, vui lòng liên hệ qua email: le6134074@gmail.com.",
     //Sidebar
     h_pattern: "Nhập Pattern (RLE)",
     p_pattern: "Dán mã RLE vào bên dưới để vẽ nhanh:",

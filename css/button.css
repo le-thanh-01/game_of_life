@@ -24,9 +24,14 @@ button:disabled {
 #btn-guide {
   top: 5em;
 }
+
+#btn-info {
+  top: 9em;
+}
 #btn-guide,
 #btn-setting,
-#btn-list {
+#btn-list,
+#btn-info {
   background: none;
   z-index: 900;
 }

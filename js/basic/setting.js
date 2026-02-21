@@ -6,35 +6,40 @@ import { Grid } from "../creativeManager/creativeManager.js";
 const els = {
   btnSetting: document.getElementById("btn-setting"),
   btnGuide: document.getElementById("btn-guide"),
-  modal: document.getElementById("setting-modal"),
-  modalG: document.getElementById("tutorialCard"),
-  btnClose: document.getElementById("close-modal"),
-  btnCloseG: document.getElementById("close-guide"),
+  btnInfo: document.getElementById("btn-info"),
+  modal: [
+    document.getElementById("setting-modal"),
+    document.getElementById("tutorialCard"),
+    document.getElementById("info-modal"),
+  ],
+  btnClose: document.querySelectorAll(".close-icon"),
   btnSave: document.getElementById("btn-save-settings"),
   inputRows: document.getElementById("modal-rows"),
   inputCols: document.getElementById("modal-cols"),
 };
-
 export function setupEvents() {
   // --- MỞ MODAL ---
   els.btnSetting.addEventListener("click", () => {
-    els.modal.classList.remove("hidden");
+    els.modal[0].classList.remove("hidden");
   });
   els.btnGuide.addEventListener("click", () => {
-    els.modalG.classList.remove("hidden");
+    els.modal[1].classList.remove("hidden");
+  });
+  els.btnInfo.addEventListener("click", () => {
+    els.modal[2].classList.remove("hidden");
   });
   // --- ĐÓNG MODAL ---
   const closeModal = (m) => m.classList.add("hidden");
 
-  els.btnClose.addEventListener("click", () => closeModal(els.modal));
-  els.btnCloseG.addEventListener("click", () => closeModal(els.modalG));
+  els.btnClose.forEach((btn, i) => {
+    btn.addEventListener("click", () => closeModal(els.modal[i]));
+  });
 
   // Click ra ngoài vùng đen cũng đóng
-  els.modal.addEventListener("click", (e) => {
-    if (e.target === els.modal) closeModal(els.modal);
-  });
-  els.modalG.addEventListener("click", (e) => {
-    if (e.target === els.modalG) closeModal(els.modalG);
+  els.modal.forEach((modal_x) => {
+    modal_x.addEventListener("click", (e) => {
+      if (e.target === modal_x) closeModal(modal_x);
+    });
   });
   // --- LƯU CÀI ĐẶT ---
   els.btnSave.addEventListener("click", () => {
@@ -45,7 +50,7 @@ export function setupEvents() {
       myGrid.intervalTime = interval;
       myGrid.cell_size = csize;
       myGrid.render();
-      closeModal(els.modal); // Đóng modal
+      closeModal(els.modal[0]); // Đóng modal
     } else {
       alert("thời gian phải >= 100ms và kích thước phải >= 10px");
     }

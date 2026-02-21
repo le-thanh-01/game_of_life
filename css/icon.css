@@ -27,3 +27,7 @@
 /* .close-icon:hover {
   color: #e74c3c;
 } */
+
+.info-close {
+  float: right;
+}
